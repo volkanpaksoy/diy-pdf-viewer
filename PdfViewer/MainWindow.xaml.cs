@@ -20,9 +20,28 @@ namespace PdfViewer
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string FilePath { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void pdfViewer_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                pdfViewer.Load(files[0]);
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(FilePath))
+            {
+                pdfViewer.Load(FilePath);
+            }
         }
     }
 }

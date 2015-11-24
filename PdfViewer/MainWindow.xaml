@@ -7,8 +7,14 @@
         xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" x:Class="PdfViewer.MainWindow"
         mc:Ignorable="d"
         Title="Easy PDF Viewer" 
-        WindowState="Maximized">
+        WindowState="Maximized"
+        Loaded="Window_Loaded">
     <Grid>
-        <PdfViewer:PdfViewerControl  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <PdfViewer:PdfViewerControl x:Name="pdfViewer"  
+                                    HorizontalAlignment="Stretch" 
+                                    VerticalAlignment="Stretch"
+                                    AllowDrop="True"
+                                    
+                                    Drop="pdfViewer_Drop"/>
     </Grid>
 </Window>
